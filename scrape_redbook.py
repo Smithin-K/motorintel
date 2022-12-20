@@ -3,7 +3,6 @@ from bs4 import BeautifulSoup
 from constants import DATA_FOLDER, ROOT_DIR
 
 
-
 class ScrapeRedbook:
 
     def __init__(self):
@@ -15,10 +14,10 @@ class ScrapeRedbook:
     #         return file
 
     def html_fetch_scraperapi(self):
-        payload = {'api_key': '5f92293ed53821a76f06e39f7afafc21', 'url': 'https://httpbin.org/ip'}
+        payload = {'api_key': '5f92293ed53821a76f06e39f7afafc21',
+                   'url': 'https://www.redbook.com.au/'}
         r = requests.get('http://api.scraperapi.com', params=payload)
-
-
+        print(r.text)
 
     def find_div(self, html, div_class):
         soup = BeautifulSoup(html, 'html.parser')
@@ -39,7 +38,5 @@ class ScrapeRedbook:
 
 if __name__ == '__main__':
     scrape = ScrapeRedbook()
-    content = scrape.fetch_html()
+    content = scrape.html_fetch_scraperapi()
     models = scrape.fetch_models(html=content)
-
-
